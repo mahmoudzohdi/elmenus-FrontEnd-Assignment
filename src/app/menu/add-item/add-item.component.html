@@ -1,0 +1,20 @@
+<form [formGroup]="addItemForm" (ngSubmit)="onSubmit()" class="add-item-form ui form column" novalidate>
+	<div class="fields">	
+		<div class="ui input">
+			<input type="text" placeholder="Item name *" formControlName="name" [value]="itemData.name? itemData.name : ''" required> 
+		</div>
+		
+		<div class="ui input">
+			<input type="text" placeholder="description" formControlName="description" [value]="itemData.description? itemData.description : ''"> 
+		</div>
+	</div>
+		
+	<div class="fields">	
+		<div class="ui input">
+			<input type="text" placeholder="price *" formControlName="price" [value]="itemData.price? itemData.price : ''" required> 
+		</div>
+
+		<button type="submit" [disabled]="!addItemForm.valid" class="submit-btn ui primary button">{{ submitBtnText }}</button> 
+	
+	</div>
+</form>

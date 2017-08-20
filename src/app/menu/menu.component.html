@@ -1,0 +1,72 @@
+<add-category *ngIf="isAdmin"></add-category>
+<div class="menu-data">
+
+	<div class="ui attached message">
+		<div class="header">
+			Menu Data
+		</div>
+	</div>
+
+	<sm-accordion class="styled fluid menu-sections">
+
+		<div *ngFor="let category of menu">
+			
+			<div class="title">
+				<i class="dropdown icon"></i>
+				{{ category.name }}
+			</div>
+			<div class="content">
+				
+				{{ category.description }}
+
+				<add-item [categoryData]="category" *ngIf="isAdmin"></add-item>
+
+				<sm-accordion class="fluid menu-subsections" *ngIf="category.items.length">
+					
+
+					<div class="category-items" *ngFor="let item of category.items">
+						<div class="item-actions" *ngIf="isAdmin">
+							<button class="ui basic small orange button icon" (click)="editItem(category, item);">
+								<i class="write icon"></i>	
+								Edit
+							</button>
+							<button class="ui basic small red button icon" (click)="deleteCategoryItem(category, item.id)">
+								<i class="remove icon"></i>
+								Delete
+							</button>
+						</div>
+
+						<div class="title">
+							<i class="dropdown icon"></i>
+							{{ item.name }}
+						</div>
+
+						<div class="content">
+							<p>
+								<strong>Description: </strong>
+								{{ item.description }}
+							</p>
+							<p>
+								<strong>Price: </strong>
+								{{ item.price | currency:symbolDisplay:true}}
+							</p>
+						</div>
+						
+					</div>
+
+				</sm-accordion>
+
+			</div>
+
+		</div>
+		
+
+	</sm-accordion>
+
+</div>
+
+<sm-modal title="Edit Item" class="" #editItemModal>
+	<modal-content>
+		<add-item *ngIf="editMode" [categoryData]="editCategory" [itemData]="itemObj"></add-item>
+	</modal-content>
+</sm-modal>

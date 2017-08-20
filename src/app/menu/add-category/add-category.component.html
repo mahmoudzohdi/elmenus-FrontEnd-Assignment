@@ -1,0 +1,14 @@
+<form [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()" class="add-category-form ui form column" novalidate>
+	<div class="fields">	
+		<div class="ui input">
+			<input type="text" placeholder="Category name *" formControlName="name" [(ngModel)]="addCategoryForm.name" required> 
+		</div>
+		
+		<div class="ui input">
+			<input type="text" placeholder="description" formControlName="description" [(ngModel)]="addCategoryForm.description"> 
+		</div>
+
+		<button type="submit" [disabled]="!addCategoryForm.valid" class="submit-btn ui primary button">Add</button> 
+
+	</div>
+</form>

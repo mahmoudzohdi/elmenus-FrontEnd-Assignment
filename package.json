@@ -22,7 +22,10 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
+    "jquery": "^3.2.1",
+    "ng-semantic": "https://github.com/vladotesanovic/ngSemantic/tarball/master",
     "rxjs": "^5.4.2",
+    "semantic-ui": "^2.2.13",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -44,6 +47,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "typescript": "^2.3.3"
   }
 }

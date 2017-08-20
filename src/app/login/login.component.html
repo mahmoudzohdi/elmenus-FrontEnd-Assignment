@@ -1,0 +1,30 @@
+<div class="header-login">
+	<div *ngIf="!islogin">
+		
+		<button type="button" (click)="toggleLogin()" class="medium ui button" [ngClass]="{'basic': !showLogin, 'grey': showLogin}">Login</button>
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form ui form column" [hidden]="!showLogin" novalidate>
+			<div class="fields">
+				<div class="ui left icon input">
+					<i class="user icon"></i>
+					<input type="text" placeholder="username" formControlName="username" [(ngModel)]="loginForm.username" required> 
+				</div>
+			</div>
+			<div class="fields">
+				<div class="ui left icon input">
+					<i class="lock icon"></i>
+					<input type="password" placeholder="password" formControlName="password" [(ngModel)]="loginForm.password"  required> 
+				</div>
+			</div>
+			<div class="ui negative message" *ngIf="authError">
+				<p>username or password wrong</p>
+			</div>
+			<button type="submit" [disabled]="!loginForm.valid" class="submit-btn ui primary button">Login</button> 
+		</form>
+
+	</div> 
+
+	<h4 class="welcome-user" *ngIf="islogin">
+		<span class="welcome">welcome,</span>{{userData.name.split(' ')[0]}}
+		<button type="button" (click)="logout()" class="logout-btn">logout</button>
+	</h4>
+</div>
